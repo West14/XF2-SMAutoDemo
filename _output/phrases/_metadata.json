@@ -1,0 +1,122 @@
+{
+    "admin_navigation.wSmad.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "791c16b6e2a0e711d4a75c717134d9ef"
+    },
+    "admin_navigation.wSmadServers.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "ac659513b2353187192e88c5d1988228"
+    },
+    "option.wsmadDemosPerPage.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "8381e0bbabbbda517120b54ef9ac38cc"
+    },
+    "option_explain.wsmadDemosPerPage.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    "option_group.wSmAutoDemo.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "791c16b6e2a0e711d4a75c717134d9ef"
+    },
+    "option_group_description.wSmAutoDemo.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    "wsmad_add_server.txt": {
+        "global_cache": true,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "74c9e12c3a19cfb79b79faf579934844"
+    },
+    "wsmad_demo_ended.txt": {
+        "global_cache": true,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "49930e686f2834eedc967a4a7a6270d5"
+    },
+    "wsmad_demo_id.txt": {
+        "global_cache": true,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "cc704225bb2bbe7193c6827f66bdfe20"
+    },
+    "wsmad_demo_list.txt": {
+        "global_cache": true,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "4674065bbdd47896ebd81b2611827efd"
+    },
+    "wsmad_demo_path.txt": {
+        "global_cache": true,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "eac522965e3e357fda180f2ad156845a"
+    },
+    "wsmad_demo_started.txt": {
+        "global_cache": true,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "caca19ffb76db8e1d745d6fbd00fc801"
+    },
+    "wsmad_edit_server.txt": {
+        "global_cache": true,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "237f5ee0356716eb2888e8ebabdb72b7"
+    },
+    "wsmad_map.txt": {
+        "global_cache": true,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "46f3ea056caa3126b91f3f70beea068c"
+    },
+    "wsmad_server.txt": {
+        "global_cache": true,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "9aa1b03934893d7134a660af4204f2a9"
+    },
+    "wsmad_server_list.txt": {
+        "global_cache": true,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "2efd7c95a30d430a51ea8edead0f3463"
+    },
+    "wsmad_sftp_host.txt": {
+        "global_cache": true,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "b08c545ddc52c4fa1b815f3000312443"
+    },
+    "wsmad_sftp_password.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "b996d2782ad76aacbf961fa6d358fd6b"
+    },
+    "wsmad_sftp_port.txt": {
+        "global_cache": true,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "e46a9646204689cefb23c879a04cec2f"
+    },
+    "wsmad_sftp_user.txt": {
+        "global_cache": true,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "e83bdf43e4d140afbd5a9e6dd07d67cc"
+    }
+}

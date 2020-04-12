@@ -1,0 +1,29 @@
+<xf:if is="$server.isInsert()">
+	<xf:title>{{ phrase('wsmad_add_server') }}</xf:title>
+	<xf:else />
+	<xf:title>{{ phrase('wsmad_edit_server:') }} {$server.name}</xf:title>
+</xf:if>
+
+<xf:form class="block" action="{{ link('wsmad-servers/save', $server) }}">
+	<div class="block-container">
+		<div class="block-body">
+			<xf:textboxrow name="name" value="{$server.name}" label="{{ phrase('name') }}" />
+			
+			<xf:textboxrow name="ip" value="{$server.ip}" label="{{ phrase('ip_address') }}" />
+			
+			<xf:numberboxrow name="port" value="{$server.port}" label="{{ phrase('port') }}" />
+			
+			<xf:textboxrow name="sftp[host]" value="{$server.sftp.host}" label="{{ phrase('wsmad_sftp_ip') }}" />
+			
+			<xf:numberboxrow name="sftp[port]" value="{$server.sftp.port}" label="{{ phrase('wsmad_sftp_port') }}" />
+			
+			<xf:textboxrow name="sftp[username]" value="{$server.sftp.username}" label="{{ phrase('wsmad_sftp_user') }}" />
+			
+			<xf:textboxrow name="sftp[password]" value="{$server.sftp.password}" label="{{ phrase('wsmad_sftp_password') }}" />
+			
+			<xf:textboxrow name="sftp[root]" value="{$server.sftp.root}" label="{{ phrase('wsmad_demo_path') }}" />
+			
+			<xf:submitrow icon="save" />
+		</div>
+	</div>
+</xf:form>

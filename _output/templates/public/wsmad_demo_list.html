@@ -1,0 +1,28 @@
+<xf:title>{{ phrase('wsmad_demo_list') }}</xf:title>
+
+<div class="block">
+	<div class="block-container">
+		<div class="block-body">
+			<xf:datalist>
+				<xf:datarow rowtype="header">
+					<xf:cell>{{ phrase('wsmad_demo_id') }}</xf:cell>
+					<xf:cell>{{ phrase('wsmad_server') }}</xf:cell>
+					<xf:cell>{{ phrase('wsmad_map') }}</xf:cell>
+					<xf:cell>{{ phrase('wsmad_demo_started') }}</xf:cell>
+					<xf:cell>{{ phrase('wsmad_demo_ended') }}</xf:cell>
+					<xf:cell>&nbsp;</xf:cell>
+				</xf:datarow>
+				<xf:foreach loop="$demos" value="$demo">
+					<xf:datarow>
+						<xf:cell>{$demo.demo_id}</xf:cell>
+						<xf:cell>{$demo.Server.name}</xf:cell>
+						<xf:cell>{$demo.demo_data.play_map}</xf:cell>
+						<xf:cell>{{ date_time($demo.demo_data.start_time) }}</xf:cell>
+						<xf:cell>{{ date_time($demo.demo_data.end_time) }}</xf:cell>
+						<xf:action href="{{ link('demos/download', $demo) }}">{{ phrase('download') }}</xf:action>
+					</xf:datarow>
+				</xf:foreach>
+			</xf:datalist>
+		</div>
+	</div>
+</div>

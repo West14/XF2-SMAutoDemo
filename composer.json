@@ -1,0 +1,8 @@
+{
+    "require": {
+        "league/flysystem-sftp": "^1.0"
+    },
+    "replace": {
+    	"league/flysystem": "1.0.57"
+    }
+}

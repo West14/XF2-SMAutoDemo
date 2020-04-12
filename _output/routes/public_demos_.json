@@ -1,0 +1,11 @@
+{
+    "route_type": "public",
+    "route_prefix": "demos",
+    "sub_name": "",
+    "format": ":str<demo_id>/",
+    "build_class": "",
+    "build_method": "",
+    "controller": "West\\SMAutoDemo:Demo",
+    "context": "wsmadDemoList",
+    "action_prefix": ""
+}

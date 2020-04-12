@@ -1,0 +1,17 @@
+{
+    "admin/wsmad_server_edit.html": {
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "875c3e0d1bf2d7896ed8e0ab00554c38"
+    },
+    "admin/wsmad_server_list.html": {
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "35da1c17b1462fb7a6ea91f7c3f13c57"
+    },
+    "public/wsmad_demo_list.html": {
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "7e2a9106ece0e31ce336344abf64aa1d"
+    }
+}

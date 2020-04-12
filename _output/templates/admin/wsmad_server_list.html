@@ -1,0 +1,26 @@
+<xf:title>{{ phrase('wsmad_server_list') }}</xf:title>
+
+<xf:pageaction>
+	<xf:button icon="add" href="{{ link('wsmad-servers/add') }}">{{ phrase('wsmad_add_server') }}</xf:button>
+</xf:pageaction>
+
+<xf:if is="$servers is not empty">
+	<div class="block">
+		<div class="block-container">
+			<div class="block-body">
+				<xf:datalist>
+					<xf:foreach loop="$servers" value="$server">
+						<xf:datarow>
+							<xf:main label="{$server.name}" href="{{ link('wsmad-servers/edit', $server) }}"
+									 hint="{$server.getAddress()}" hash="{$server.server_id}" />
+						</xf:datarow>
+					</xf:foreach>
+				</xf:datalist>
+			</div>
+		</div>
+	</div>
+	<xf:else />
+	<div class="blockMessage">
+		{{ phrase('no_items_have_been_created_yet') }}
+	</div>
+</xf:if>
