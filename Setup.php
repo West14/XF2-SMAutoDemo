@@ -9,9 +9,9 @@ use XF\AddOn\StepRunnerUpgradeTrait;
 
 class Setup extends AbstractSetup
 {
-	use StepRunnerInstallTrait;
-	use StepRunnerUpgradeTrait;
-	use StepRunnerUninstallTrait;
+    use StepRunnerInstallTrait;
+    use StepRunnerUpgradeTrait;
+    use StepRunnerUninstallTrait;
 
     public function installStep1()
     {
@@ -19,9 +19,9 @@ class Setup extends AbstractSetup
         {
             $this->createTable($tableName, $closure);
         }
-	}
+    }
 
-	public function uninstallStep1()
+    public function uninstallStep1()
     {
         foreach (array_keys($this->getTables()) as $tableName)
         {
@@ -53,5 +53,5 @@ class Setup extends AbstractSetup
         };
 
         return $tables;
-	}
+    }
 }
