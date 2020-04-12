@@ -12,7 +12,6 @@ namespace West\SMAutoDemo\Service\Demo;
 
 use League\Flysystem\FileExistsException;
 use League\Flysystem\ZipArchive\ZipArchiveAdapter;
-use West\SMAutoDemo\Util\Path;
 use West\SMAutoDemo\Util\Path as PathUtil;
 use XF\Service\AbstractService;
 
