@@ -46,14 +46,22 @@ class Download extends AbstractService
         $fs->mountFilesystem('wsmad-temp-demo-zip', $zip);
 
         try {
+            $serverFsPrefix = $server->getFsPrefix();
+            $demoFilename = $this->getDemoFilename();
+            $jsonFilename = $this->getJsonFilename();
+
+            $serverDemPath = "{$serverFsPrefix}://{$demoFilename}";
+            $serverJsonPath = "{$serverFsPrefix}://{$jsonFilename}";
+
+            $fs->copy($serverDemPath, "wsmad-temp-demo-zip://{$demoFilename}");
             $fs->copy(
-                $server->getFsPrefix() . '://' . $this->getDemoFilename(),
-                'wsmad-temp-demo-zip://' . $this->getDemoFilename()
+                $serverJsonPath,
+                PathUtil::buildPath(['data://wsmad-demos', $server->server_id, $jsonFilename], true)
             );
-            $fs->copy(
-                $server->getFsPrefix() . '://' . $this->getJsonFilename(),
-                PathUtil::buildPath(['data://wsmad-demos', $server->server_id, $this->getJsonFilename()], true)
-            );
+
+            $fs->delete($serverDemPath);
+            $fs->delete($serverJsonPath);
+
         } catch (FileExistsException $e) {
             \XF::logException($e);
             return;
