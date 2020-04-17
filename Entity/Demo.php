@@ -18,7 +18,7 @@ use XF\Mvc\Entity\Structure;
  * @property string demo_id
  * @property int server_id
  * @property array demo_data
- * @property bool is_downloaded
+ * @property string download_state
  * @property int downloaded_at
  *
  * RELATIONS
@@ -40,7 +40,12 @@ class Demo extends Entity
     {
         return $this->getAbstractedPath() . '.json';
     }
-    
+
+    public function isDownloaded()
+    {
+        return $this->download_state == 'downloaded';
+    }
+
     public static function getStructure(Structure $structure)
     {
         $structure->table = 'xf_wsmad_demo';
@@ -50,7 +55,10 @@ class Demo extends Entity
             'demo_id' => ['type' => self::STR, 'maxLength' => 36, 'required' => true],
             'server_id' => ['type' => self::UINT, 'required' => true],
             'demo_data' => ['type' => self::JSON_ARRAY, 'default' => []],
-            'is_downloaded' => ['type' => self::BOOL, 'default' => false],
+            'download_state' => [
+                'type' => self::STR, 'default' => 'not_downloaded',
+                'allowedValues' => ['downloaded', 'enqueued', 'not_downloaded']
+            ],
             'downloaded_at' => ['type' => self::UINT, 'default' => 0]
         ];
 

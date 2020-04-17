@@ -30,7 +30,7 @@ class ParseData extends AbstractService
      */
     public function parse()
     {
-        if (!$this->demo->is_downloaded)
+        if (!$this->demo->isDownloaded())
         {
             \XF::logError('[SM AutoDemo] Cannot parse demo json because demo isn\'t downloaded');
             return;

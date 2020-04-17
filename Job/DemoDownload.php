@@ -15,26 +15,44 @@ use XF\Job\JobResult;
 
 class DemoDownload extends AbstractJob
 {
+    protected $defaultData = [
+        'demoIds' => []
+    ];
+
     /**
-     * @inheritDoc
+     * @param int $maxRunTime
+     * @return JobResult
+     * @throws \League\Flysystem\FileNotFoundException
+     * @throws \XF\PrintableException
      */
     public function run($maxRunTime)
     {
-        // TODO: Implement run() method.
+        if (empty($this->data['demoIds']))
+            return $this->complete();
+
+        $demo = $this->app->find('West\SMAutoDemo:Demo', array_shift($this->data['demoIds']));
+        if ($demo)
+        {
+            /** @var \West\SMAutoDemo\Service\Demo\Download $service */
+            $service = $this->app->service('West\SMAutoDemo:Demo\Download', $demo);
+            $service->download();
+        }
+
+        return $this->resume();
     }
 
     public function getStatusMessage()
     {
-        // TODO: Implement getStatusMessage() method.
+        return \XF::phrase('wsmad_downloading_demos...');
     }
 
     public function canCancel()
     {
-        // TODO: Implement canCancel() method.
+        return false;
     }
 
     public function canTriggerByChoice()
     {
-        // TODO: Implement canTriggerByChoice() method.
+        return false;
     }
 }

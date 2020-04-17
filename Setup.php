@@ -47,7 +47,7 @@ class Setup extends AbstractSetup
             $table->addColumn('demo_id', 'varchar', 36);
             $table->addColumn('server_id', 'int');
             $table->addColumn('demo_data', 'blob');
-            $table->addColumn('is_downloaded', 'tinyint')->setDefault(0);
+            $table->addColumn('download_state', 'enum')->values(['downloaded', 'enqueued', 'not_downloaded']);
             $table->addColumn('downloaded_at', 'int')->setDefault(0);
             $table->addPrimaryKey('demo_id');
         };

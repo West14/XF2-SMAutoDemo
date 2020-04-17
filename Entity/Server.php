@@ -37,7 +37,7 @@ class Server extends Entity
         return "wsmad-server-{$this->server_id}";
     }
 
-    public function mountFs()
+    public function mountFs(\League\Flysystem\MountManager $fs = null)
     {
         /*
         $fs = $this->app()->fs();
@@ -54,7 +54,12 @@ class Server extends Entity
             )->getFilesystem($this->getFsPrefix());
         }*/
 
-        $this->app()->fs()->mountFilesystem(
+        if (!$fs)
+        {
+            $fs = $this->app()->fs();
+        }
+
+        $fs->mountFilesystem(
             $this->getFsPrefix(),
             new \League\Flysystem\Filesystem(
                 new SftpAdapter($this->sftp)

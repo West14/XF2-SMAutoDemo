@@ -17,13 +17,15 @@ class Path
         return self::buildPath(array_merge([\XF::getRootDirectory()], $parts));
     }
 
-    public static function buildPath(array $parts)
+    public static function buildPath(array $parts, $trimFirstDs = false)
     {
         $path = '';
         foreach ($parts as $part)
         {
             $path .= \XF::$DS . $part;
         }
+
+        $path = $trimFirstDs ? ltrim($path, \XF::$DS) : $path;
 
         return $path;
     }

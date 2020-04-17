@@ -38,7 +38,7 @@ class Download extends AbstractService
 
         $zip = new \League\Flysystem\Filesystem(
             new ZipArchiveAdapter(PathUtil::buildPathFromRoot([
-                'data', 'wsmad-demos', $this->demo->demo_id . '.zip'
+                'data', 'wsmad-demos', $server->server_id, $this->demo->demo_id . '.zip'
             ]))
         );
 
@@ -48,21 +48,22 @@ class Download extends AbstractService
         try {
             $fs->copy(
                 $server->getFsPrefix() . '://' . $this->getDemoFilename(),
-                "wsmad-temp-demo-zip://" . $this->getDemoFilename()
+                'wsmad-temp-demo-zip://' . $this->getDemoFilename()
             );
             $fs->copy(
                 $server->getFsPrefix() . '://' . $this->getJsonFilename(),
-                PathUtil::buildPath(['data://wsmad-demos', $server->server_id, $this->getJsonFilename()])
+                PathUtil::buildPath(['data://wsmad-demos', $server->server_id, $this->getJsonFilename()], true)
             );
         } catch (FileExistsException $e) {
             \XF::logException($e);
             return;
         }
 
-        $this->demo->fastUpdate([
-            'is_downloaded' => true,
+        $this->demo->bulkSet([
+            'download_state' => 'downloaded',
             'downloaded_at' => \XF::$time
         ]);
+        $this->demo->save();
 
         /** @var ParseData $parser */
         $parser = $this->service('West\SMAutoDemo:Demo\ParseData', $this->demo);

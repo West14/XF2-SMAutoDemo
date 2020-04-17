@@ -19,9 +19,9 @@ class Demo extends Repository
         return $this->finder('West\SMAutoDemo:Demo');
     }
 
-    public function findDemosForView()
+    public function findDemosForView($isDownloaded = true)
     {
         return $this->findDemosForList()
-            ->where('is_downloaded', true);
+            ->where('download_state', $isDownloaded ? 'downloaded' : 'not_downloaded');
     }
 }
