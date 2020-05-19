@@ -53,6 +53,21 @@ class Download extends AbstractService
             $serverDemPath = "{$serverFsPrefix}://{$demoFilename}";
             $serverJsonPath = "{$serverFsPrefix}://{$jsonFilename}";
 
+            /*$demoStream = $fs->readStream($serverDemPath);
+            $fs->writeStream("wsmad-temp-demo-zip://{$demoFilename}", $demoStream);*/
+
+            /**
+             *  Modern problems needs modern solutions
+             *  West, 19.05.2020 22:54
+             */
+            $demSize = $fs->getSize($serverDemPath);
+            $availableMemory = \XF::getAvailableMemory();
+            if (!$demSize || ($availableMemory > 0 && $demSize >= $availableMemory))
+            {
+                \XF::logError("Size of the \"{$this->demo->demo_id}\" demo is greater than amount of available memory.");
+                return;
+            }
+
             $fs->copy($serverDemPath, "wsmad-temp-demo-zip://{$demoFilename}");
             $fs->copy(
                 $serverJsonPath,

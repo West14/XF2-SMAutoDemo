@@ -16,7 +16,8 @@ class Demo extends Repository
 {
     public function findDemosForList()
     {
-        return $this->finder('West\SMAutoDemo:Demo');
+        return $this->finder('West\SMAutoDemo:Demo')
+            ->order('downloaded_at', 'DESC');
     }
 
     public function findDemosForView($isDownloaded = true)
