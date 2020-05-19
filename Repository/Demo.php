@@ -20,9 +20,24 @@ class Demo extends Repository
             ->order('downloaded_at', 'DESC');
     }
 
-    public function findDemosForView($isDownloaded = true)
+    public function findDemosForView(bool $isDownloaded = true)
     {
         return $this->findDemosForList()
             ->where('download_state', $isDownloaded ? 'downloaded' : 'not_downloaded');
+    }
+
+    /**
+     * @param int $cutOff
+     * @return \XF\Mvc\Entity\Finder
+     */
+    public function findExpiredDemos(int $cutOff = 0)
+    {
+        $cutOff = \XF::$time - ($cutOff == 0 ? $this->options()->wsmadDemoLifetime * 3600 : $cutOff);
+
+        return $this->findDemosForList()
+            ->where([
+                ['download_state' => 'downloaded'],
+                ['downloaded_at', '<', $cutOff]
+            ]);
     }
 }

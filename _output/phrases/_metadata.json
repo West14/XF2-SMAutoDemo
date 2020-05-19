@@ -17,11 +17,29 @@
         "version_string": "1.0.0 Alpha",
         "hash": "9c96c0a10960f9aff3270a646b10156b"
     },
+    "cron_entry.wsmadCleanup.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "ba451fe05a61fcc4c420c4bfd1d9c101"
+    },
+    "option.wsmadDeleteDemosAfter.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "9ce22de0581e032c88df7e3d71f76e34"
+    },
     "option.wsmadDemosPerPage.txt": {
         "global_cache": false,
         "version_id": 1000010,
         "version_string": "1.0.0 Alpha",
         "hash": "8381e0bbabbbda517120b54ef9ac38cc"
+    },
+    "option_explain.wsmadDeleteDemosAfter.txt": {
+        "global_cache": false,
+        "version_id": 1000010,
+        "version_string": "1.0.0 Alpha",
+        "hash": "bdf20b4439cc84e56196cdfc95f085f4"
     },
     "option_explain.wsmadDemosPerPage.txt": {
         "global_cache": false,

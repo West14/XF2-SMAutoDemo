@@ -46,6 +46,29 @@ class Demo extends Entity
         return $this->download_state == 'downloaded';
     }
 
+    protected function getDeletableFiles()
+    {
+        return [$this->getAbstractedZipPath(), $this->getAbstractedJsonPath()];
+    }
+
+    public function _postDelete()
+    {
+        if ($this->isDownloaded())
+        {
+            $fs = $this->app()->fs();
+            foreach ($this->getDeletableFiles() as $path)
+            {
+                try {
+                    $fs->delete($path);
+                } catch (\League\Flysystem\FileNotFoundException $e)
+                {
+                    \XF::logException($e);
+                    continue;
+                }
+            }
+        }
+    }
+
     public static function getStructure(Structure $structure)
     {
         $structure->table = 'xf_wsmad_demo';

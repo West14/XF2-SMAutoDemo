@@ -1,0 +1,17 @@
+{
+    "cron_class": "West\\SMAutoDemo\\Cron\\Cleanup",
+    "cron_method": "performCleanup",
+    "run_rules": {
+        "day_type": "dom",
+        "dom": [
+            -1
+        ],
+        "hours": [
+            -1
+        ],
+        "minutes": [
+            0
+        ]
+    },
+    "active": true
+}
