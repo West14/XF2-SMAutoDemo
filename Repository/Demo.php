@@ -36,7 +36,7 @@ class Demo extends Repository
 
         return $this->findDemosForList()
             ->where([
-                ['download_state' => 'downloaded'],
+                'download_state' => 'downloaded',
                 ['downloaded_at', '<', $cutOff]
             ]);
     }
