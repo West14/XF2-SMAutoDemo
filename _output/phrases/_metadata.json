@@ -23,10 +23,10 @@
         "version_string": "1.0.0 Alpha",
         "hash": "ba451fe05a61fcc4c420c4bfd1d9c101"
     },
-    "option.wsmadDeleteDemosAfter.txt": {
+    "option.wsmadDemoLifetime.txt": {
         "global_cache": false,
-        "version_id": 1000010,
-        "version_string": "1.0.0 Alpha",
+        "version_id": 1000011,
+        "version_string": "1.0.0 Alpha 1",
         "hash": "9ce22de0581e032c88df7e3d71f76e34"
     },
     "option.wsmadDemosPerPage.txt": {
@@ -35,10 +35,10 @@
         "version_string": "1.0.0 Alpha",
         "hash": "8381e0bbabbbda517120b54ef9ac38cc"
     },
-    "option_explain.wsmadDeleteDemosAfter.txt": {
+    "option_explain.wsmadDemoLifetime.txt": {
         "global_cache": false,
-        "version_id": 1000010,
-        "version_string": "1.0.0 Alpha",
+        "version_id": 1000011,
+        "version_string": "1.0.0 Alpha 1",
         "hash": "bdf20b4439cc84e56196cdfc95f085f4"
     },
     "option_explain.wsmadDemosPerPage.txt": {
