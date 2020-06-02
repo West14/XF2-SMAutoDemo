@@ -14,7 +14,7 @@ class Path
 {
     public static function buildPathFromRoot(array $parts)
     {
-        return self::buildPath(array_merge([\XF::getRootDirectory()], $parts));
+        return self::buildPath(array_merge([\XF::getRootDirectory()], $parts), true);
     }
 
     public static function buildPath(array $parts, $trimFirstDs = false)
