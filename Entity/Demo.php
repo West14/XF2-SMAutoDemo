@@ -23,6 +23,7 @@ use XF\Mvc\Entity\Structure;
  *
  * RELATIONS
  * @property \West\SMAutoDemo\Entity\Server Server
+ * @property \XF\Mvc\Entity\AbstractCollection|\West\SMAutoDemo\Entity\DemoPlayer[] Players
  */
 class Demo extends Entity
 {
@@ -51,6 +52,9 @@ class Demo extends Entity
         return [$this->getAbstractedZipPath(), $this->getAbstractedJsonPath()];
     }
 
+    /**
+     * @throws \XF\PrintableException
+     */
     public function _postDelete()
     {
         if ($this->isDownloaded())
@@ -65,6 +69,11 @@ class Demo extends Entity
                     \XF::logException($e);
                     continue;
                 }
+            }
+
+            foreach ($this->Players as $demoPlayer)
+            {
+                $demoPlayer->delete();
             }
         }
     }
@@ -90,6 +99,11 @@ class Demo extends Entity
                 'entity' => 'West\SMAutoDemo:Server',
                 'type' => self::TO_ONE,
                 'conditions' => 'server_id'
+            ],
+            'Players' => [
+                'entity' => 'West\SMAutoDemo:DemoPlayer',
+                'type' => self::TO_MANY,
+                'conditions' => 'demo_id'
             ]
         ];
 

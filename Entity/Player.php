@@ -19,8 +19,8 @@ use Kruzya\SteamIdConverter\SteamID;
  * @property int account_id
  * @property string username
  *
- * RELATIONS
- * @property \XF\Entity\User User
+ * GETTERS
+ * @property Entity|null User
  */
 class Player extends Entity
 {
