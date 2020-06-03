@@ -70,11 +70,6 @@ class Demo extends Entity
                     continue;
                 }
             }
-
-            foreach ($this->Players as $demoPlayer)
-            {
-                $demoPlayer->delete();
-            }
         }
     }
 
@@ -106,7 +101,8 @@ class Demo extends Entity
             'Players' => [
                 'entity' => 'West\SMAutoDemo:DemoPlayer',
                 'type' => self::TO_MANY,
-                'conditions' => 'demo_id'
+                'conditions' => 'demo_id',
+                'cascadeDelete' => true
             ]
         ];
 
