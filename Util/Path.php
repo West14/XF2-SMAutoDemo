@@ -25,7 +25,7 @@ class Path
             $path .= \XF::$DS . $part;
         }
 
-        $path = $trimFirstDs ? ltrim($path, \XF::$DS) : $path;
+        $path = $trimFirstDs ? substr($path, 1) : $path;
 
         return $path;
     }
