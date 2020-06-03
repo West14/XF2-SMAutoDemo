@@ -36,10 +36,30 @@ class ParseData extends AbstractService
             return;
         }
 
-        $this->demo->demo_data = \XF\Util\Json::decodeJsonOrSerialized(
+        $demoId = $this->demo->demo_id;
+        $demoData = \XF\Util\Json::decodeJsonOrSerialized(
             \XF::app()->fs()->read($this->demo->getAbstractedJsonPath())
         );
 
+        foreach ($demoData['players'] as $player)
+        {
+            $demoPlayer = $this->em()->create('West\SMAutoDemo:DemoPlayer');
+            $demoPlayer->bulkSet([
+                'demo_id' => $demoId,
+                'account_id' => $player['account_id']
+            ]);
+            $demoPlayer->save();
+
+            /** @var \West\SMAutoDemo\Entity\Player $ePlayer */
+            $ePlayer = $demoPlayer->getRelationOrDefault('Player');
+            $ePlayer->username = $player['name'];
+
+            if ($ePlayer->hasChanges())
+                $ePlayer->save();
+        }
+
+        // TODO: for BC purposes, will be moved to the columns in future
+        $this->demo->demo_data = $demoData;
         $this->demo->save();
     }
 }

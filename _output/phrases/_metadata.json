@@ -95,6 +95,12 @@
         "version_string": "1.0.0 Alpha",
         "hash": "caca19ffb76db8e1d745d6fbd00fc801"
     },
+    "wsmad_demos_with_you.txt": {
+        "global_cache": true,
+        "version_id": 1000012,
+        "version_string": "1.0.0 Alpha 2",
+        "hash": "6d799698a5d46256c73f840c79667e35"
+    },
     "wsmad_edit_server.txt": {
         "global_cache": true,
         "version_id": 1000010,

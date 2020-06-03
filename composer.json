@@ -1,6 +1,7 @@
 {
     "require": {
-        "league/flysystem-sftp": "^1.0"
+        "league/flysystem-sftp": "^1.0",
+        "kruzya/steam-id-converter": "^1.0"
     },
     "replace": {
     	"league/flysystem": "1.0.57"

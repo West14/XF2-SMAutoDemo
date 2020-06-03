@@ -1,5 +1,13 @@
 <xf:title>{{ phrase('wsmad_demo_list') }}</xf:title>
 
+<xf:pageaction>
+	<xf:if is="{$xf.visitor.getAccountId()}">
+		<xf:button href="{{ link('demos', null, {'account_id': $xf.visitor.getAccountId()}) }}">
+			{{ phrase('wsmad_demos_with_you') }}
+		</xf:button>
+	</xf:if>
+</xf:pageaction>
+
 <div class="block">
 	<div class="block-container">
 		<div class="block-body">
@@ -26,3 +34,6 @@
 		</div>
 	</div>
 </div>
+
+<xf:pagenav page="{$page}" perpage="{$perPage}" total="{$total}"
+			link="demos" params="{$params}" />

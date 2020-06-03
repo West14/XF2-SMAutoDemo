@@ -10,6 +10,7 @@
 namespace West\SMAutoDemo\Repository;
 
 
+use West\SMAutoDemo\Entity\Player;
 use XF\Mvc\Entity\Repository;
 
 class Demo extends Repository
@@ -24,6 +25,25 @@ class Demo extends Repository
     {
         return $this->findDemosForList()
             ->where('download_state', $isDownloaded ? 'downloaded' : 'not_downloaded');
+    }
+
+    /**
+     * @param $playerOrAccountId
+     * @return \XF\Mvc\Entity\Finder
+     */
+    public function findDemosWithPlayer($playerOrAccountId)
+    {
+        if ($playerOrAccountId instanceof Player)
+        {
+            $playerOrAccountId = $playerOrAccountId->account_id;
+        }
+
+        $demoIds = $this->finder('West\SMAutoDemo:DemoPlayer')
+            ->where('account_id', $playerOrAccountId)
+            ->fetchColumns('demo_id');
+
+        return $this->findDemosForView()
+            ->where('demo_id', $demoIds);
     }
 
     /**

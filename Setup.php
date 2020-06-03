@@ -21,6 +21,16 @@ class Setup extends AbstractSetup
         }
     }
 
+    public function upgrade1000012Step1()
+    {
+        $tables = ['xf_wsmad_player', 'xf_wsmad_demo_player'];
+
+        foreach ($tables as $tableName)
+        {
+            $this->createTable($tableName, $this->getTables()[$tableName]);
+        }
+    }
+
     public function uninstallStep1()
     {
         foreach (array_keys($this->getTables()) as $tableName)
@@ -50,6 +60,21 @@ class Setup extends AbstractSetup
             $table->addColumn('download_state', 'enum')->values(['downloaded', 'enqueued', 'not_downloaded']);
             $table->addColumn('downloaded_at', 'int')->setDefault(0);
             $table->addPrimaryKey('demo_id');
+        };
+
+        $tables['xf_wsmad_player'] = function (\XF\Db\Schema\Create $table)
+        {
+            $table->addColumn('account_id', 'int');
+            $table->addColumn('username', 'text');
+            $table->addPrimaryKey('account_id');
+        };
+
+        $tables['xf_wsmad_demo_player'] = function (\XF\Db\Schema\Create $table)
+        {
+            $table->addColumn('demo_id', 'varchar', 36);
+            $table->addColumn('account_id', 'int');
+            $table->addColumn('data', 'blob');
+            $table->addPrimaryKey(['demo_id', 'account_id']);
         };
 
         return $tables;

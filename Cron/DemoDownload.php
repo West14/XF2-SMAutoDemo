@@ -21,7 +21,7 @@ class DemoDownload
         $demos = $demoRepo->findDemosForView(false)
             ->fetch();
 
-        if (!empty($demos))
+        if ($demos->count() > 0)
         {
             \XF::app()
                 ->jobManager()

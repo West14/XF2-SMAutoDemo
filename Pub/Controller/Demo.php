@@ -23,13 +23,20 @@ class Demo extends AbstractController
     {
         $page = $this->filterPage();
         $perPage = $this->options()->wsmadDemosPerPage;
+        $demoRepo = $this->getDemoRepo();
 
-        $finder = $this->getDemoRepo()
-            ->findDemosForView()
-            ->limitByPage($page, $perPage);
+        $accountId = $this->filter('account_id', 'uint');
+        if ($accountId)
+        {
+            $finder = $demoRepo->findDemosWithPlayer($accountId);
+        }
+        else
+        {
+            $finder = $demoRepo->findDemosForView();
+        }
 
+        $finder->limitByPage($page, $perPage);
         $total = $finder->total();
-
         $this->assertValidPage($page, $perPage, $total, 'demos');
 
         return $this->view('West\SMAutoDemo:Demo\List', 'wsmad_demo_list', [
@@ -37,7 +44,8 @@ class Demo extends AbstractController
 
             'page' => $page,
             'perPage' => $perPage,
-            'total' => $total
+            'total' => $total,
+            'params' => !$accountId ?: ['account_id' => $accountId]
         ]);
     }
 
