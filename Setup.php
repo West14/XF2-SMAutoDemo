@@ -6,6 +6,7 @@ use XF\AddOn\AbstractSetup;
 use XF\AddOn\StepRunnerInstallTrait;
 use XF\AddOn\StepRunnerUninstallTrait;
 use XF\AddOn\StepRunnerUpgradeTrait;
+use XF\Db\Schema\Alter;
 
 class Setup extends AbstractSetup
 {
@@ -29,6 +30,48 @@ class Setup extends AbstractSetup
         {
             $this->createTable($tableName, $this->getTables()[$tableName]);
         }
+    }
+
+    public function upgrade1000013Step1()
+    {
+        $this->alterTable('xf_wsmad_demo', function (Alter $table)
+        {
+            $table->addColumn('map', 'text');
+            $table->addColumn('demo_started', 'int')->setDefault(0);
+            $table->addColumn('demo_ended', 'int')->setDefault(0);
+            $table->addColumn('tick_count', 'int')->setDefault(0);
+        });
+    }
+
+    public function upgrade1000013Step2()
+    {
+        $db = $this->db();
+        $demos = $db->fetchAll("
+                    SELECT `demo_id`, `demo_data` 
+                    FROM `xf_wsmad_demo` 
+                    WHERE `download_state` = 'downloaded'
+         ");
+
+        foreach ($demos as $demo)
+        {
+            if ($demoData = \XF\Util\Json::decodeJsonOrSerialized($demo['demo_data']))
+            {
+                $db->update('xf_wsmad_demo', [
+                    'map' => $demoData['play_map'],
+                    'demo_started' => $demoData['start_time'],
+                    'demo_ended' => $demoData['end_time'],
+                    'tick_count' => $demoData['recorded_ticks']
+                ], 'demo_id = ?', $demo['demo_id']);
+            }
+        }
+    }
+
+    public function upgrade1000013Step3()
+    {
+        $this->alterTable('xf_wsmad_demo', function (Alter $table)
+        {
+            $table->dropColumns(['demo_data']);
+        });
     }
 
     public function uninstallStep1()

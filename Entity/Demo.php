@@ -86,7 +86,10 @@ class Demo extends Entity
         $structure->columns = [
             'demo_id' => ['type' => self::STR, 'maxLength' => 36, 'required' => true],
             'server_id' => ['type' => self::UINT, 'required' => true],
-            'demo_data' => ['type' => self::JSON_ARRAY, 'default' => []],
+            'map' => ['type' => self::STR, 'default' => ''],
+            'demo_started' => ['type' => self::UINT, 'default' => 0],
+            'demo_ended' => ['type' => self::UINT, 'default' => 0],
+            'tick_count' => ['type' => self::UINT, 'default' => 0],
             'download_state' => [
                 'type' => self::STR, 'default' => 'not_downloaded',
                 'allowedValues' => ['downloaded', 'enqueued', 'not_downloaded']

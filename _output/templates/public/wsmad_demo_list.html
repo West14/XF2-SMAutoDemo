@@ -24,9 +24,9 @@
 					<xf:datarow>
 						<xf:cell>{$demo.demo_id}</xf:cell>
 						<xf:cell>{$demo.Server.name}</xf:cell>
-						<xf:cell>{$demo.demo_data.play_map}</xf:cell>
-						<xf:cell>{{ date_time($demo.demo_data.start_time) }}</xf:cell>
-						<xf:cell>{{ date_time($demo.demo_data.end_time) }}</xf:cell>
+						<xf:cell>{$demo.map}</xf:cell>
+						<xf:cell>{{ date_time($demo.demo_started) }}</xf:cell>
+						<xf:cell>{{ date_time($demo.demo_ended) }}</xf:cell>
 						<xf:action href="{{ link('demos/download', $demo) }}">{{ phrase('download') }}</xf:action>
 					</xf:datarow>
 				</xf:foreach>
