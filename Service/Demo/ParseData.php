@@ -58,8 +58,12 @@ class ParseData extends AbstractService
                 $ePlayer->save();
         }
 
-        // TODO: for BC purposes, will be moved to the columns in future
-        $this->demo->demo_data = $demoData;
+        $this->demo->bulkSet([
+            'map' => $demoData['play_map'],
+            'demo_started' => $demoData['start_time'],
+            'demo_ended' => $demoData['end_time'],
+            'tick_count' => $demoData['recorded_ticks']
+        ]);
         $this->demo->save();
     }
 }
