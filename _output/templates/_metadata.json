@@ -1,8 +1,18 @@
 {
+    "admin/wsmad_fsadapater_options.wsmadFtp": {
+        "version_id": 1000014,
+        "version_string": "1.0.0 Alpha 4",
+        "hash": "81a02721019436ebc10abf6898686c61"
+    },
+    "admin/wsmad_fsadapater_options.wsmadSftp": {
+        "version_id": 1000014,
+        "version_string": "1.0.0 Alpha 4",
+        "hash": "125cb58089280792a16ac4cdc9fcdbe4"
+    },
     "admin/wsmad_server_edit.html": {
-        "version_id": 1000010,
-        "version_string": "1.0.0 Alpha",
-        "hash": "875c3e0d1bf2d7896ed8e0ab00554c38"
+        "version_id": 1000014,
+        "version_string": "1.0.0 Alpha 4",
+        "hash": "86e8b658aba0406d061e13b2165d96fa"
     },
     "admin/wsmad_server_list.html": {
         "version_id": 1000010,

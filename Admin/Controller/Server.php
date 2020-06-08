@@ -68,6 +68,25 @@ class Server extends AbstractController
         // TODO
     }
 
+    /**
+     * @param ParameterBag $params
+     * @return \XF\Mvc\Reply\View
+     * @throws \XF\Mvc\Reply\Exception
+     * @throws \Exception
+     */
+    public function actionGetOptions(ParameterBag $params)
+    {
+        $server = $this->assertServerExists($params->server_id);
+        $id = $this->filter('id', 'str');
+
+        $server->adapter_id = $id;
+        $adapter = $server->getFsAdapter();
+
+        $view = $this->view('West\SMAutoDemo:Server\Options');
+        $view->setJsonParam('description', $adapter->renderOptions());
+        return $view;
+    }
+    
     protected function serverSaveProcess(\West\SMAutoDemo\Entity\Server $server)
     {
         return $this->formAction()
@@ -77,15 +96,23 @@ class Server extends AbstractController
                     'name' => 'str',
                     'ip' => 'str',
                     'port' => 'uint',
-                    'sftp' => 'json-array'
+                    'adapter_id' => 'str',
+                    'adapter_options' => 'json-array'
                 ])
             );
     }
-    
+
+    /**
+     * @param \West\SMAutoDemo\Entity\Server $server
+     * @return \XF\Mvc\Reply\View
+     * @throws \Exception
+     */
     protected function serverAddEdit(\West\SMAutoDemo\Entity\Server $server)
     {
         return $this->view('West\SMAutoDemo:Server\Edit', 'wsmad_server_edit', [
-            'server' => $server
+            'server' => $server,
+            'fsAdapters' => $this->getFsAdapterRepo()->findAdaptersForList()->fetch(),
+            'fsAdapterOptionsHtml' => $server->getFsAdapter()->renderOptions()
         ]);
     }
 
@@ -107,5 +134,13 @@ class Server extends AbstractController
     protected function getServerRepo()
     {
         return $this->repository('West\SMAutoDemo:Server');
+    }
+
+    /**
+     * @return \XF\Mvc\Entity\Repository|\West\SMAutoDemo\Repository\FsAdapter
+     */
+    protected function getFsAdapterRepo()
+    {
+        return $this->repository('West\SMAutoDemo:FsAdapter');
     }
 }

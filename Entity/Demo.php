@@ -17,7 +17,10 @@ use XF\Mvc\Entity\Structure;
  * COLUMNS
  * @property string demo_id
  * @property int server_id
- * @property array demo_data
+ * @property string map
+ * @property int demo_started
+ * @property int demo_ended
+ * @property int tick_count
  * @property string download_state
  * @property int downloaded_at
  *

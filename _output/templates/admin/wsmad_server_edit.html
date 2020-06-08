@@ -4,7 +4,9 @@
 	<xf:title>{{ phrase('wsmad_edit_server:') }} {$server.name}</xf:title>
 </xf:if>
 
-<xf:form class="block" action="{{ link('wsmad-servers/save', $server) }}">
+<xf:js src="west/smad/desc_loader.js" />
+
+<xf:form class="block" action="{{ link('wsmad-servers/save', $server) }}" ajax="true">
 	<div class="block-container">
 		<div class="block-body">
 			<xf:textboxrow name="name" value="{$server.name}" label="{{ phrase('name') }}" />
@@ -13,15 +15,17 @@
 			
 			<xf:numberboxrow name="port" value="{$server.port}" label="{{ phrase('port') }}" />
 			
-			<xf:textboxrow name="sftp[host]" value="{$server.sftp.host}" label="{{ phrase('wsmad_sftp_ip') }}" />
+			<xf:selectrow name="adapter_id" 
+						  value="{$server.adapter_id}" 
+						  label="{{ phrase('wsmad_filesystem_adapter') }}" 
+						  data-xf-init="wsmad-desc-loader"
+						  data-desc-url="{{ link('wsmad-servers/get-options', $server) }}">
+				<xf:foreach loop="$fsAdapters" value="$fsAdapter">
+					<xf:option value="{$fsAdapter.adapter_id}">{$fsAdapter.getTitle()}</xf:option>
+				</xf:foreach>
+			</xf:selectrow>
 			
-			<xf:numberboxrow name="sftp[port]" value="{$server.sftp.port}" label="{{ phrase('wsmad_sftp_port') }}" />
-			
-			<xf:textboxrow name="sftp[username]" value="{$server.sftp.username}" label="{{ phrase('wsmad_sftp_user') }}" />
-			
-			<xf:textboxrow name="sftp[password]" value="{$server.sftp.password}" label="{{ phrase('wsmad_sftp_password') }}" />
-			
-			<xf:textboxrow name="sftp[root]" value="{$server.sftp.root}" label="{{ phrase('wsmad_demo_path') }}" />
+			<div class="js-descTarget">{$fsAdapterOptionsHtml|raw}</div>
 			
 			<xf:submitrow icon="save" />
 		</div>

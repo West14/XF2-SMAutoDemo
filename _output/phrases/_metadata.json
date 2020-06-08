@@ -65,6 +65,12 @@
         "version_string": "1.0.0 Alpha",
         "hash": "74c9e12c3a19cfb79b79faf579934844"
     },
+    "wsmad_authentication_data_is_required.txt": {
+        "global_cache": true,
+        "version_id": 1000014,
+        "version_string": "1.0.0 Alpha 4",
+        "hash": "650977bee5d5d8ced09df52afab334a4"
+    },
     "wsmad_demo_ended.txt": {
         "global_cache": true,
         "version_id": 1000010,
@@ -107,11 +113,71 @@
         "version_string": "1.0.0 Alpha",
         "hash": "237f5ee0356716eb2888e8ebabdb72b7"
     },
+    "wsmad_filesystem_adapter.txt": {
+        "global_cache": true,
+        "version_id": 1000014,
+        "version_string": "1.0.0 Alpha 4",
+        "hash": "37c0e7b1d0b4ff61cbaabef9140bfe62"
+    },
+    "wsmad_fsadapter_title.wsmadFtp.txt": {
+        "global_cache": true,
+        "version_id": 1000014,
+        "version_string": "1.0.0 Alpha 4",
+        "hash": "c728a49363c9a93a43a7e7f232b5a54a"
+    },
+    "wsmad_fsadapter_title.wsmadSftp.txt": {
+        "global_cache": true,
+        "version_id": 1000014,
+        "version_string": "1.0.0 Alpha 4",
+        "hash": "ea1386cf13bf90b95782349fdd4b2721"
+    },
+    "wsmad_host.txt": {
+        "global_cache": true,
+        "version_id": 1000014,
+        "version_string": "1.0.0 Alpha 4",
+        "hash": "c2ca16d048ec66e04bca283eab048ec2"
+    },
     "wsmad_map.txt": {
         "global_cache": true,
         "version_id": 1000010,
         "version_string": "1.0.0 Alpha",
         "hash": "46f3ea056caa3126b91f3f70beea068c"
+    },
+    "wsmad_passphrase.txt": {
+        "global_cache": true,
+        "version_id": 1000014,
+        "version_string": "1.0.0 Alpha 4",
+        "hash": "7d9a6d091a1ac8739e205280f092db99"
+    },
+    "wsmad_password.txt": {
+        "global_cache": true,
+        "version_id": 1000014,
+        "version_string": "1.0.0 Alpha 4",
+        "hash": "dc647eb65e6711e155375218212b3964"
+    },
+    "wsmad_password_cant_be_used_together_with_privatekey.txt": {
+        "global_cache": true,
+        "version_id": 1000014,
+        "version_string": "1.0.0 Alpha 4",
+        "hash": "b6db1d5c47f9db52a35a590644945ee9"
+    },
+    "wsmad_path_to_private_key.txt": {
+        "global_cache": true,
+        "version_id": 1000014,
+        "version_string": "1.0.0 Alpha 4",
+        "hash": "25e0ad0da4cb73b9468c1f6ecb431c1c"
+    },
+    "wsmad_port.txt": {
+        "global_cache": true,
+        "version_id": 1000014,
+        "version_string": "1.0.0 Alpha 4",
+        "hash": "60aaf44d4b562252c04db7f98497e9aa"
+    },
+    "wsmad_private_key.txt": {
+        "global_cache": true,
+        "version_id": 1000014,
+        "version_string": "1.0.0 Alpha 4",
+        "hash": "6eb9040e470e8018db394832a528f56a"
     },
     "wsmad_server.txt": {
         "global_cache": true,
@@ -125,28 +191,10 @@
         "version_string": "1.0.0 Alpha",
         "hash": "2efd7c95a30d430a51ea8edead0f3463"
     },
-    "wsmad_sftp_host.txt": {
+    "wsmad_user.txt": {
         "global_cache": true,
-        "version_id": 1000010,
-        "version_string": "1.0.0 Alpha",
-        "hash": "b08c545ddc52c4fa1b815f3000312443"
-    },
-    "wsmad_sftp_password.txt": {
-        "global_cache": false,
-        "version_id": 1000010,
-        "version_string": "1.0.0 Alpha",
-        "hash": "b996d2782ad76aacbf961fa6d358fd6b"
-    },
-    "wsmad_sftp_port.txt": {
-        "global_cache": true,
-        "version_id": 1000010,
-        "version_string": "1.0.0 Alpha",
-        "hash": "e46a9646204689cefb23c879a04cec2f"
-    },
-    "wsmad_sftp_user.txt": {
-        "global_cache": true,
-        "version_id": 1000010,
-        "version_string": "1.0.0 Alpha",
-        "hash": "e83bdf43e4d140afbd5a9e6dd07d67cc"
+        "version_id": 1000014,
+        "version_string": "1.0.0 Alpha 4",
+        "hash": "8f9bfe9d1345237cb3b2b205864da075"
     }
 }

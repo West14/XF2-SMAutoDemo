@@ -20,10 +20,12 @@ use XF\Mvc\Entity\Structure;
  * @property string name
  * @property string ip
  * @property int port
- * @property array sftp
+ * @property string adapter_id
+ * @property array adapter_options
  *
  * RELATIONS
  * @property \XF\Mvc\Entity\AbstractCollection|\West\SMAutoDemo\Entity\Demo[] Demos
+ * @property \West\SMAutoDemo\Entity\FsAdapter FsAdapter
  */
 class Server extends Entity
 {
@@ -37,23 +39,12 @@ class Server extends Entity
         return "wsmad-server-{$this->server_id}";
     }
 
+    /**
+     * @param \League\Flysystem\MountManager|null $fs
+     * @throws \Exception
+     */
     public function mountFs(\League\Flysystem\MountManager $fs = null)
     {
-        /*
-        $fs = $this->app()->fs();
-        try {
-            return $fs->getFilesystem($this->getFsPrefix());
-        }
-        catch (FilesystemNotFoundException $e)
-        {
-            return $fs->mountFilesystem(
-                $this->getFsPrefix(),
-                new \League\Flysystem\Filesystem(
-                    new SftpAdapter($this->sftp)
-                )
-            )->getFilesystem($this->getFsPrefix());
-        }*/
-
         if (!$fs)
         {
             $fs = $this->app()->fs();
@@ -62,9 +53,36 @@ class Server extends Entity
         $fs->mountFilesystem(
             $this->getFsPrefix(),
             new \League\Flysystem\Filesystem(
-                new SftpAdapter($this->sftp)
+                $this->getFsAdapter()->getAdapter()
             )
         );
+    }
+
+    /**
+     * @return \West\SMAutoDemo\FsAdapter\AbstractAdapter|null
+     * @throws \Exception
+     */
+    public function getFsAdapter()
+    {
+        $class = \XF::stringToClass($this->FsAdapter->adapter_class, '%s\FsAdapter\%s');
+
+        if (!class_exists($class))
+            return null;
+
+        $class = \XF::extendClass($class);
+        return new $class($this->adapter_id, $this->adapter_options);
+    }
+
+    /**
+     * @throws \Exception
+     */
+    protected function _preSave()
+    {
+        $errors = $this->getFsAdapter()->validateOptions();
+        foreach ($errors as $error)
+        {
+            $this->error($error);
+        }
     }
 
     public static function getStructure(Structure $structure)
@@ -77,14 +95,21 @@ class Server extends Entity
             'name' => ['type' => self::STR, 'required' => true],
             'ip' => ['type' => self::STR, 'default' => '127.0.0.1'],
             'port' => ['type' => self::UINT, 'default' => 27015],
-            'sftp' => ['type' => self::JSON_ARRAY, 'default' => []]
+            'adapter_id' => ['type' => self::STR, 'maxLength' => 50, 'required' => true],
+            'adapter_options' => ['type' => self::JSON_ARRAY, 'default' => []],
         ];
 
         $structure->relations = [
             'Demos' => [
                 'entity' => 'West\SMAutoDemo:Demo',
                 'type' => self::TO_MANY,
-                'conditions' => 'server_id'
+                'conditions' => 'server_id',
+                'cascadeDelete' => true
+            ],
+            'FsAdapter' => [
+                'entity' => 'West\SMAutoDemo:FsAdapter',
+                'type' => self::TO_ONE,
+                'conditions' => 'adapter_id'
             ]
         ];
 

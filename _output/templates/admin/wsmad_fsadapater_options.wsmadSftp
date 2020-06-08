@@ -1,0 +1,18 @@
+<xf:textboxrow name="adapter_options[host]" value="{$options.host}" label="{{ phrase('wsmad_host') }}" />
+
+<xf:numberboxrow name="adapter_options[port]" value="{$options.port}" label="{{ phrase('wsmad_port') }}" />
+
+<xf:textboxrow name="adapter_options[username]" value="{$options.username}" label="{{ phrase('wsmad_user') }}" />
+
+<xf:radiorow name="sftp_method" value="{{ $options.password ? 'password' : 'privkey' }}">
+	<xf:option value="password" label="{{ phrase('password') }}">
+		<xf:textbox name="adapter_options[password]" value="{$options.password}" label="{{ phrase('wsmad_password') }}" />
+	</xf:option>
+	
+	<xf:option value="privkey" label="{{ phrase('wsmad_private_key') }}">
+		<xf:textbox name="adapter_options[privateKey]" value="{$options.privateKey}" placeholder="{{ phrase('wsmad_path_to_private_key') }}" />
+		<xf:textbox name="adapter_options[passphrase]" value="{$options.passphrase}" placeholder="{{ phrase('wsmad_passphrase') }}" />
+	</xf:option>
+</xf:radiorow>
+
+<xf:textboxrow name="adapter_options[root]" value="{$options.root}" label="{{ phrase('wsmad_demo_path') }}" />
