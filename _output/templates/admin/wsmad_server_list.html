@@ -12,7 +12,7 @@
 					<xf:foreach loop="$servers" value="$server">
 						<xf:datarow>
 							<xf:main label="{$server.name}" href="{{ link('wsmad-servers/edit', $server) }}"
-									 hint="{$server.getAddress()}" hash="{$server.server_id}" />
+									 hint="{$server.getAddress()}. ServerID: {$server.server_id}" hash="{$server.server_id}" />
 						</xf:datarow>
 					</xf:foreach>
 				</xf:datalist>
