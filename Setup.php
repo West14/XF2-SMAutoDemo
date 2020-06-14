@@ -31,7 +31,7 @@ class Setup extends AbstractSetup
     public function upgrade1000012Step1()
     {
         $tableNames = ['xf_wsmad_player', 'xf_wsmad_demo_player'];
-		$tables = $this->getTables();
+        $tables = $this->getTables();
 
         foreach ($tableNames as $tableName)
         {
