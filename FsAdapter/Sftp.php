@@ -22,7 +22,7 @@ class Sftp extends AbstractAdapter
         $errors = [];
         $options = $this->options;
 
-        if (empty($options['host']) || empty($options['user']))
+        if (empty($options['host']) || empty($options['username']))
             $errors[] = \XF::phrase('wsmad_host_and_user_is_required');
 
         if (isset($options['password']) && isset($options['privateKey']))
