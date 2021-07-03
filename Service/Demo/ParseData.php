@@ -27,6 +27,7 @@ class ParseData extends AbstractService
     /**
      * @throws \League\Flysystem\FileNotFoundException
      * @throws \XF\PrintableException
+     * @throws \Exception
      */
     public function parse()
     {
@@ -65,5 +66,29 @@ class ParseData extends AbstractService
             'tick_count' => $demoData['recorded_ticks']
         ]);
         $this->demo->save();
+
+        foreach ($demoData['events'] as $event)
+        {
+            /** @var \West\SMAutoDemo\Entity\DemoEvent $demoEvent */
+            $demoEvent = $this->em()->create('West\SMAutoDemo:DemoEvent');
+            $demoEvent->bulkSet([
+                'demo_id' => $demoId,
+                'name' => $event['event_name'],
+                'time' => $event['time'],
+                'tick' => $event['tick']
+            ]);
+            $demoEvent->save();
+
+            foreach ($event['data'] as $field => $value)
+            {
+                $eventData = $this->em()->create('West\SMAutoDemo:DemoEventData');
+                $eventData->bulkSet([
+                    'event_id' => $demoEvent->event_id,
+                    'field' => $field,
+                    'value' => $value
+                ]);
+                $eventData->save();
+            }
+        }
     }
 }

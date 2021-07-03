@@ -11,12 +11,6 @@
         "version_string": "1.0.0 Alpha",
         "hash": "ac659513b2353187192e88c5d1988228"
     },
-    "cron_entry.wmfuDemoDownload.txt": {
-        "global_cache": false,
-        "version_id": 1000010,
-        "version_string": "1.0.0 Alpha",
-        "hash": "9c96c0a10960f9aff3270a646b10156b"
-    },
     "cron_entry.wsmadCleanup.txt": {
         "global_cache": false,
         "version_id": 1000010,

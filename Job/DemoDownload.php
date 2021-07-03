@@ -15,10 +15,6 @@ use XF\Job\JobResult;
 
 class DemoDownload extends AbstractJob
 {
-    protected $defaultData = [
-        'demoIds' => []
-    ];
-
     /**
      * @param int $maxRunTime
      * @return JobResult
@@ -27,10 +23,12 @@ class DemoDownload extends AbstractJob
      */
     public function run($maxRunTime)
     {
-        if (empty($this->data['demoIds']))
+        if (empty($this->data['demoId']))
+        {
             return $this->complete();
+        }
 
-        $demo = $this->app->find('West\SMAutoDemo:Demo', array_shift($this->data['demoIds']));
+        $demo = $this->app->find('West\SMAutoDemo:Demo', $this->data['demoId']);
         if ($demo)
         {
             /** @var \West\SMAutoDemo\Service\Demo\Download $service */
@@ -38,7 +36,7 @@ class DemoDownload extends AbstractJob
             $service->download();
         }
 
-        return $this->resume();
+        return $this->complete();
     }
 
     public function getStatusMessage()

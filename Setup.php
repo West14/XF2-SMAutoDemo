@@ -105,6 +105,17 @@ class Setup extends AbstractSetup
         ], null);
     }
 
+    public function upgrade1000015Step1()
+    {
+        $tableNames = ['xf_wsmad_demo_event', 'xf_wsmad_demo_event_data'];
+        $tables = $this->getTables();
+
+        foreach ($tableNames as $tableName)
+        {
+            $this->createTable($tableName, $tables[$tableName]);
+        }
+    }
+
     public function uninstallStep1()
     {
         foreach (array_keys($this->getTables()) as $tableName)
@@ -182,6 +193,24 @@ class Setup extends AbstractSetup
             $table->addColumn('adapter_class', 'text');
             $table->addColumn('addon_id', 'varbinary', 50)->setDefault('');
             $table->addPrimaryKey('adapter_id');
+        };
+
+        $tables['xf_wsmad_demo_event'] = function (Create $table)
+        {
+            $table->addColumn('event_id', 'varchar', 36);
+            $table->addColumn('demo_id', 'varchar', 36);
+            $table->addColumn('name', 'varchar', 64);
+            $table->addColumn('time', 'int');
+            $table->addColumn('tick', 'int');
+            $table->addPrimaryKey('event_id');
+        };
+
+        $tables['xf_wsmad_demo_event_data'] = function(Create $table)
+        {
+            $table->addColumn('event_id', 'varchar', 36);
+            $table->addColumn('field', 'varchar', 64);
+            $table->addColumn('value', 'varbinary', 128);
+            $table->addPrimaryKey(['event_id', 'field']);
         };
 
         return $tables;

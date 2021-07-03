@@ -35,6 +35,13 @@ class Server extends AbstractController
         );
         $demo->save();
 
+        $this->app()->jobManager()->enqueueUnique(
+            'wsmad-demoDl-' . substr($demo->demo_id, 0, 8),
+            'West\SMAutoDemo:DemoDownload',
+            [
+                'demoId' => $demo->demo_id
+            ]
+        );
         return $this->apiSuccess();
     }
 

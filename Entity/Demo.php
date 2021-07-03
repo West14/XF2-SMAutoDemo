@@ -106,6 +106,12 @@ class Demo extends Entity
                 'type' => self::TO_MANY,
                 'conditions' => 'demo_id',
                 'cascadeDelete' => true
+            ],
+            'Events' => [
+                'entity' => 'West\SMAutoDemo:DemoEvent',
+                'type' => self::TO_MANY,
+                'conditions' => 'demo_id',
+                'cascadeDelete' => true
             ]
         ];
 
