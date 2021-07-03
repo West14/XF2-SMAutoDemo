@@ -185,6 +185,12 @@
         "version_string": "1.0.0 Alpha",
         "hash": "2efd7c95a30d430a51ea8edead0f3463"
     },
+    "wsmad_specified_demo_was_not_found.txt": {
+        "global_cache": true,
+        "version_id": 1000015,
+        "version_string": "1.0.0 Alpha 5",
+        "hash": "7db2a854539de29eadb0cb262b0d34d1"
+    },
     "wsmad_user.txt": {
         "global_cache": true,
         "version_id": 1000014,
