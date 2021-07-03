@@ -56,10 +56,15 @@ class Demo extends AbstractController
      */
     public function actionDownload(ParameterBag $params)
     {
-        $this->setResponseType('raw');
+        $demo = $this->assertDemoExists(
+            $params->demo_id,
+            null,
+            'wsmad_requested_demo_not_found_maybe_deleted'
+        );
 
+        $this->setResponseType('raw');
         return $this->view('West\SMAutoDemo:Demo\Download', '', [
-            'demo' => $this->assertDemoExists($params->demo_id)
+            'demo' => $demo
         ]);
     }
 
@@ -72,7 +77,7 @@ class Demo extends AbstractController
      */
     protected function assertDemoExists($id, $with = null, $phraseKey = null)
     {
-        return $this->assertRecordExists('West\SMAutoDemo:Demo', $id, $phraseKey);
+        return $this->assertRecordExists('West\SMAutoDemo:Demo', $id, $with, $phraseKey);
     }
 
     /**
