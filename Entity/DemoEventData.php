@@ -29,7 +29,7 @@ class DemoEventData extends Entity
         $structure->columns = [
             'event_id' => ['type' => self::STR, 'maxLength' => 36, 'required' => true],
             'field' => ['type' => self::STR, 'maxLength' => 64, 'required' => true],
-            'value' => ['type' => self::BINARY, 'maxLength' => 128, 'required' => true]
+            'value' => ['type' => self::BINARY, 'maxLength' => 128, 'forced' => true, 'required' => true]
         ];
         $structure->relations = [
             'Event' => [

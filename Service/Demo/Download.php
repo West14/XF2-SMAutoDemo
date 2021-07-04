@@ -88,9 +88,9 @@ class Download extends AbstractService
         ]);
         $this->demo->save();
 
-        /** @var ParseData $parser */
-        $parser = $this->service('West\SMAutoDemo:Demo\ParseData', $this->demo);
-        $parser->parse();
+//        /** @var ParseData $parser */
+//        $parser = $this->service('West\SMAutoDemo:Demo\ParseData', $this->demo);
+//        $parser->parse();
     }
 
     protected function getDemoFilename()
