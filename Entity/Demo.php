@@ -55,9 +55,35 @@ class Demo extends Entity
         return [$this->getAbstractedZipPath(), $this->getAbstractedJsonPath()];
     }
 
-    /**
-     * @throws \XF\PrintableException
-     */
+    protected function _preDelete()
+    {
+        $demoHoldSettings = \XF::options()->wsmadDemoHold;
+
+        if ($demoHoldSettings['enabled'])
+        {
+            $customFieldValueList = $this->finder('XF:ThreadFieldValue')
+                ->where([
+                    ['field_id', '=', $demoHoldSettings['customFieldId']],
+                    ['field_value', '=', $this->demo_id]
+                ])
+                ->with('Thread')
+                ->fetch();
+
+            foreach ($customFieldValueList as $item)
+            {
+                /** @var \XF\Entity\Thread $thread */
+                $thread = $item->Thread;
+                if ($thread->discussion_open)
+                {
+                    $this->error(\XF::phrase('wsmad_there_are_open_discussion_related_to_this_demo', [
+                        'threadTitle' => $thread->title,
+                        'threadUrl' => $this->app()->router('public')->buildLink('threads', $thread)
+                    ]));
+                }
+            }
+        }
+    }
+
     public function _postDelete()
     {
         if ($this->isDownloaded())

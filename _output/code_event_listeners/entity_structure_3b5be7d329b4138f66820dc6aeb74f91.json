@@ -1,0 +1,9 @@
+{
+    "event_id": "entity_structure",
+    "execute_order": 100600,
+    "callback_class": "West\\SMAutoDemo\\Listener",
+    "callback_method": "threadFieldValueStructure",
+    "active": true,
+    "hint": "XF\\Entity\\ThreadFieldValue",
+    "description": ""
+}

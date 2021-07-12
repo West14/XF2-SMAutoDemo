@@ -1,8 +1,11 @@
 {
+    "wsmadDemoHold.json": {
+        "hash": "9c28b5cabb5da7311037d4cf43cdddb3"
+    },
     "wsmadDemoLifetime.json": {
-        "hash": "417ea29d5c1be22721640aa1e7fdc8e5"
+        "hash": "f4c9f8c4668921c40fb57b8442bb3c4b"
     },
     "wsmadDemosPerPage.json": {
-        "hash": "07edac96883ed72121d90c9b5f9aad4a"
+        "hash": "8f19db0c83504a9b362a70080088a18e"
     }
 }

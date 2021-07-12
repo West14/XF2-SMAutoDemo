@@ -95,7 +95,7 @@ class Server extends Entity
             'name' => ['type' => self::STR, 'required' => true],
             'ip' => ['type' => self::STR, 'default' => '127.0.0.1'],
             'port' => ['type' => self::UINT, 'default' => 27015],
-            'adapter_id' => ['type' => self::STR, 'maxLength' => 50, 'required' => true],
+            'adapter_id' => ['type' => self::STR, 'maxLength' => 50, 'default' => 'wsmadSftp'],
             'adapter_options' => ['type' => self::JSON_ARRAY, 'default' => []],
         ];
 

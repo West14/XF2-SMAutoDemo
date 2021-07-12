@@ -1,0 +1,12 @@
+<xf:checkboxrow
+	label="{$option.title}"
+	hint="{$hintHtml}"
+	explain="{$explainHtml}"
+	html="{$listedHtml}">
+	
+	<xf:option checked="{$option.option_value.enabled}" 
+			   name="{$inputName}[enabled]" 
+			   label="{{ phrase('enabled') }}">
+		<xf:textbox name="{$inputName}[customFieldId]" placeholder="{{ phrase('field_id') }}" value="{$option.option_value.customFieldId}" />
+	</xf:option>
+</xf:checkboxrow>

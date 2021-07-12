@@ -23,7 +23,7 @@ class Cleanup
         /** @var \West\SMAutoDemo\Entity\Demo $demo */
         foreach ($repo->findExpiredDemos()->fetch() as $demo)
         {
-            $demo->delete();
+            $demo->delete(false);
         }
     }
 }

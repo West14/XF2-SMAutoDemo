@@ -17,6 +17,12 @@
         "version_string": "1.0.0 Alpha",
         "hash": "ba451fe05a61fcc4c420c4bfd1d9c101"
     },
+    "option.wsmadDemoHold.txt": {
+        "global_cache": false,
+        "version_id": 1000016,
+        "version_string": "1.0.0 Alpha 6",
+        "hash": "a8f371424f72445906247a03dc76012f"
+    },
     "option.wsmadDemoLifetime.txt": {
         "global_cache": false,
         "version_id": 1000011,
@@ -28,6 +34,12 @@
         "version_id": 1000010,
         "version_string": "1.0.0 Alpha",
         "hash": "8381e0bbabbbda517120b54ef9ac38cc"
+    },
+    "option_explain.wsmadDemoHold.txt": {
+        "global_cache": false,
+        "version_id": 1000016,
+        "version_string": "1.0.0 Alpha 6",
+        "hash": "6f7f41fa3f9c3ac7aee434dd7b6e58ab"
     },
     "option_explain.wsmadDemoLifetime.txt": {
         "global_cache": false,
@@ -160,6 +172,12 @@
         "version_id": 1000014,
         "version_string": "1.0.0 Alpha 4",
         "hash": "25e0ad0da4cb73b9468c1f6ecb431c1c"
+    },
+    "wsmad_please_enter_valid_thread_field_id.txt": {
+        "global_cache": false,
+        "version_id": 1000016,
+        "version_string": "1.0.0 Alpha 6",
+        "hash": "d783ed771cbd09bc4cb54176bfa3e7bc"
     },
     "wsmad_port.txt": {
         "global_cache": true,

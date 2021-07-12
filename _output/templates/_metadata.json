@@ -1,4 +1,9 @@
 {
+    "admin/option_template_wsmadDemoHold.html": {
+        "version_id": 1000016,
+        "version_string": "1.0.0 Alpha 6",
+        "hash": "49806a867381c36327dd2f1d6200a50a"
+    },
     "admin/wsmad_fsadapater_options.wsmadFtp": {
         "version_id": 1000014,
         "version_string": "1.0.0 Alpha 4",

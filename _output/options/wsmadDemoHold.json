@@ -1,0 +1,15 @@
+{
+    "edit_format": "template",
+    "edit_format_params": "option_template_wsmadDemoHold",
+    "data_type": "array",
+    "sub_options": [
+        "enabled",
+        "customFieldId"
+    ],
+    "validation_class": "West\\SMAutoDemo\\Option\\DemoHold",
+    "validation_method": "verifyOption",
+    "default_value": "{\"enabled\":false,\"customFieldId\":false}",
+    "relations": {
+        "wSmAutoDemo": 30
+    }
+}
