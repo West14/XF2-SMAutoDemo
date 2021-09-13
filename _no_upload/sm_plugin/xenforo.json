@@ -1,0 +1,5 @@
+{
+    "BaseURL": "<XenForo base URL>",
+    "ApiKey":  "<XenForo API Key>",
+    "ServerID": 0
+}

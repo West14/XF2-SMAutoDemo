@@ -31,13 +31,13 @@ page or you may build it manually (see [Building](#building)).
 > file which is located in this repository root. This will help you to configure the plugin properly.**
 
 Then you need to create the config file for the plugin.
-Go to your SourceMod directory on the target server, then open `configs` folder.
-In this folder you should create a text file called `autodemo_xf.json`.
+Go to your SourceMod directory on the target server, then open `configs/AutoDemo` folder.
+In this folder you should create a text file called `xenforo.json`.
 Fill it by this example:
 ```json
 {
-    "ApiPath": "https://<your XenForo address>/api",
-    "ApiKey": "<Your API Key>",
+    "BaseURL": "<XenForo base URL>",
+    "ApiKey":  "<XenForo API Key>",
     "ServerID": 0
 }
 ```
